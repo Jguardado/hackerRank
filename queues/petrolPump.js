@@ -9,32 +9,45 @@ const HRinput  = [ '3', '1 5', '10 3', '3 4', '' ];
 const petrolPump = (input) => {
   // const parsedInput = input.split("\n")
   const parsedInput = input;
-
   const numOfPumps = parsedInput.shift();
   parsedInput.pop();
   const pumps = parsedInput.map((pump) => {
     return pump.split(" ");
   });
 
-  const route = [];
+  const route = [pumps[0]];
 
-  // LOL not working yet because the values are string smh
-  pumps.forEach((pump, indexPos) => {
-    console.log("BC: ", pump[0], pump[1]);
-    if(pump[0] > pump[1]) {
-      console.log("FC: ", pump[0], pump[1]);
-      route.push([pump, indexPos])
-    }
+  const enqueue = (tuple) => {
+    route.unshift(tuple)
+  }
 
-    if(pump[0] == pump[1]) {
-      console.log("SC: ", pump[0], pump[1]);
-      route.push([pump, indexPos])
-    }
+  const dequeue = (tuple) => {
+    route.forEach((pump, i) => {
+      if (pump === tuple) {
+        console.log("dequeue conditional passes: ", tuple);
+        return route.splice(i, 1)
+      }
+    })
+  }
 
-    // route.push([pump, indexPos])
-  })
-  console.log("routes: ", route);
+  const preSortEval = (array) => {
+    console.log("presort");
+    return array.map((item, index) => {
+      return [Number(item[0]), index]
+    })
+  }
 
+  const extractMiles = (array) => {
+    return array.map((locale) => locale[0])
+  }
+
+  const order = extractMiles(preSortEval(pumps)).sort((a, b) => a - b)
+
+  // sort locales
+
+  const groupedByIndex = preSortEval(pumps)
+
+  console.log("route: ", order, 'group', test);
 
 }
 
