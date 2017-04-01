@@ -47,7 +47,22 @@ const petrolPump = (input) => {
 
   const groupedByIndex = preSortEval(pumps)
 
-  console.log("route: ", order, 'group', test);
+  const correctlySorted = [];
+
+  const lovelyDoubleLoop = (array, array2) => {
+      array.forEach((milage) => {
+        array2.forEach((pump) => {
+          console.log("this is pump: ", pump);
+          if(milage == pump[0]) {
+            correctlySorted.unshift(pump)
+          }
+        })
+      })
+  }
+
+  lovelyDoubleLoop(order, pumps)
+  console.log("route: ", order, 'group', groupedByIndex);
+  console.log("correctlySorted: ", correctlySorted);
 
 }
 
