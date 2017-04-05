@@ -49,16 +49,16 @@ const petrolPump = (input) => {
 
   const correctlySorted = [];
 
-  const lovelyDoubleLoop = (array, array2) => {
-      array.forEach((milage) => {
-        array2.forEach((pump) => {
-          console.log("this is pump: ", pump);
-          if(milage == pump[0]) {
-            correctlySorted.unshift(pump)
-          }
-        })
-      })
-  }
+  // const lovelyDoubleLoop = (array, array2) => {
+  //     array.forEach((milage) => {
+  //       array2.forEach((pump) => {
+  //         console.log("this is pump: ", pump);
+  //         if(milage == pump[0]) {
+  //           correctlySorted.unshift(pump)
+  //         }
+  //       })
+  //     })
+  // }
 
   lovelyDoubleLoop(order, pumps)
   console.log("route: ", order, 'group', groupedByIndex);
@@ -66,7 +66,28 @@ const petrolPump = (input) => {
 
 }
 
-petrolPump(HRinput)
+// petrolPump(HRinput)
+
+const gasStationRoutes = () => {
+
+  const gasCheck = (gasInTank, newGas, distanceToGo) => {
+    const gasDifference = gas - distanceToGo;
+    return gasInTank + gasDifference;
+  }
+
+  // gasTank object shows capacity/amount of gas at each index
+  const gasTank = {
+    0: 0
+  }
+
+  const startIndex = 0;
+  const startIndexHistory = [];
+
+  const routeCheck = () => {
+
+  }
+}
+
 
 /*
 new apporach
@@ -90,7 +111,7 @@ and entire circle, the we should at that index to this collection. (have it remo
 ########### Problem we need to iterate in a circular pattern (i.e. if we start and index 1
 we need to go through array until all indexes checked or ending at index 0) ################
 
----------possible solution. once start variable is set, iterate through input unshofting each index,
+---------possible solution. once start variable is set, iterate through input unshifting each index,
 then enqueing (pushing) that index to the back of the array until you have reached start point -------------
 
 create a func (routeCheck) that takes in an array of pumps:
