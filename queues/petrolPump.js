@@ -70,15 +70,18 @@ const petrolPump = (input) => {
 
 const gasStationRoutes = () => {
 
+  let gasTank = 4;
   const gasCheck = (gasInTank, newGas, distanceToGo) => {
-    const gasDifference = gas - distanceToGo;
+    const gasDifference = newGas - distanceToGo;
     return gasInTank + gasDifference;
   }
 
+  gasTank = gasCheck(gasTank,10, 3);
+  console.log("gasTank: ", gasTank);
   // gasTank object shows capacity/amount of gas at each index
-  const gasTank = {
-    0: 0
-  }
+  // const gasTank = {
+  //   0: 0
+  // }
 
   const startIndex = 0;
   const startIndexHistory = [];
@@ -87,7 +90,7 @@ const gasStationRoutes = () => {
 
   }
 }
-
+gasStationRoutes()
 
 /*
 new apporach
