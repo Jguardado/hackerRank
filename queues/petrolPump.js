@@ -47,23 +47,6 @@ const petrolPump = (input) => {
 
   const groupedByIndex = preSortEval(pumps)
 
-  const correctlySorted = [];
-
-  // const lovelyDoubleLoop = (array, array2) => {
-  //     array.forEach((milage) => {
-  //       array2.forEach((pump) => {
-  //         console.log("this is pump: ", pump);
-  //         if(milage == pump[0]) {
-  //           correctlySorted.unshift(pump)
-  //         }
-  //       })
-  //     })
-  // }
-
-  // lovelyDoubleLoop(order, pumps)
-  // console.log("route: ", order, 'group', groupedByIndex);
-  // console.log("correctlySorted: ", correctlySorted);
-
 }
 
 // petrolPump(HRinput)
@@ -78,13 +61,12 @@ const gasStationRoutes = (input) => {
 
 
 
-  let gasTank = 4;
+  let gasTank = 0;
   const gasCheck = (gasInTank, newGas, distanceToGo) => {
     const gasDifference = newGas - distanceToGo;
     return gasInTank + gasDifference;
   }
 
-  gasTank = gasCheck(gasTank,10, 3);
   // console.log("gasTank: ", gasTank);
   // gasTank object shows capacity/amount of gas at each index
   // const gasTank = {
@@ -96,17 +78,24 @@ const gasStationRoutes = (input) => {
 
   const routeCheck = (pumps) => {
     pumps.forEach((pump, index) => {
+      // console.log("gasTank before addition: ", gasTank);
       gasTank = gasCheck(gasTank, pump[0], pump[1])
-      console.log("gasTank in loop: ", gasTank);
+      // console.log("gasTank in loop: ", gasTank);
+      if(gasTank <= 0) {
+        console.log("empty");
+
+      }
+
       if(gasTank > 0) {
         startIndexHistory.push(index)
       }
+      return
     })
   }
-  
+
   routeCheck(pumps)
-  console.log("gasTank: ", gasTank);
-  console.log("startIndexHistory: ", startIndexHistory);
+  // console.log("gasTank: ", gasTank);
+  // console.log("startIndexHistory: ", startIndexHistory);
 }
 gasStationRoutes(HRinput)
 
