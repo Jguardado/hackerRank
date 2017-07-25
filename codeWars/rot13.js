@@ -1,5 +1,4 @@
 const rot13 = (message) => {
-  // your code here
   const splitWord = message.split('');
   const letterArr = [
     'a', 'b', 'c',
@@ -9,40 +8,47 @@ const rot13 = (message) => {
     'm', 'n', 'o',
     'p', 'q', 'r',
     's', 't', 'u',
-    'v', 'w', ' x',
+    'v', 'w', 'x',
     'y', 'z'];
   let encrypted = [];
   const capitalLetterIndex = {};
   const alphaIndex = (currentIndex) => {
     const newIndex = currentIndex + 13;
-    if (newIndex <= 26) {
+    if (newIndex < 26) {
       return newIndex;
     }
     return newIndex - 26;
   };
 
   splitWord.forEach((letter, letterIndex) => {
-    letterArr.forEach((possibleMatch, i) => {
-      if (letter === possibleMatch) {
-        encrypted.push(letterArr[alphaIndex(i)]);
-      } else if (letter.toLowerCase() === possibleMatch) {
-        capitalLetterIndex[letterIndex] = true;
-      }
-    });
+    const regIt = /[a-zA-Z]/;
+    if (regIt.exec(letter)) {
+      letterArr.forEach((possibleMatch, i) => {
+        if (letter === possibleMatch) {
+          console.log('letter: ', letter);
+          console.log('possibleMatch: ', possibleMatch, i);
+          encrypted.push(letterArr[alphaIndex(i)]);
+        } else if (letter.toLowerCase() === possibleMatch) {
+          encrypted.push(letterArr[alphaIndex(i)]);
+          capitalLetterIndex[letterIndex] = true;
+        }
+      });
+    } else {
+      encrypted.push(letter);
+    }
   });
 
   if (Object.keys(capitalLetterIndex)) {
     encrypted = encrypted.map((letter, i) => {
       if (capitalLetterIndex[i]) {
-        console.log('going trhough capp', i);
         return letter.toUpperCase();
       }
       return letter;
     });
   }
-  console.log('capitalLetterIndex: ', capitalLetterIndex);
-  console.log('encrypted: ', encrypted.join(''));
-  return encrypted;
+  console.log('outcome: ', encrypted.join(''));
+  return encrypted.join('');
 };
 
-rot13('Test');
+rot13('abcdefghijklmnopqrstuvwxyz ');
+// Expected: nopqrstuvwxyzabcdefghijklm ,
