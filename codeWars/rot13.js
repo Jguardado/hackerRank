@@ -25,8 +25,6 @@ const rot13 = (message) => {
     if (regIt.exec(letter)) {
       letterArr.forEach((possibleMatch, i) => {
         if (letter === possibleMatch) {
-          console.log('letter: ', letter);
-          console.log('possibleMatch: ', possibleMatch, i);
           encrypted.push(letterArr[alphaIndex(i)]);
         } else if (letter.toLowerCase() === possibleMatch) {
           encrypted.push(letterArr[alphaIndex(i)]);
@@ -46,7 +44,6 @@ const rot13 = (message) => {
       return letter;
     });
   }
-  console.log('outcome: ', encrypted.join(''));
   return encrypted.join('');
 };
 
