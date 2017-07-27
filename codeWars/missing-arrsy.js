@@ -5,10 +5,10 @@ function getLengthOfMissingArray(arrayOfArrays) {
     return missingLength;
   }
   const lengthTracker = [];
-
+  let foundNull = false;
   arrayOfArrays.forEach((arr) => {
     if (arr === null) {
-      return missingLength;
+      return foundNull = true;
     }
     return lengthTracker.push(arr.length);
   });
@@ -21,7 +21,7 @@ function getLengthOfMissingArray(arrayOfArrays) {
     min += 1;
   }
   missingLength = fullScale.filter(i => sorted.indexOf(i) < 0);
-  if (missingLength[0] === null || missingLength[0] === undefined || sorted[0] === 0) {
+  if (missingLength[0] === null || missingLength[0] === undefined || sorted[0] === 0 || foundNull === true) {
     missingLength = 0;
   } else {
     missingLength = missingLength[0];
