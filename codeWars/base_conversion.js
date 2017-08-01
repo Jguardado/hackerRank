@@ -10,7 +10,8 @@ const Alphabet = {
 };
 
 /*
-  In this kata you have to implement a base converter, which converts between arbitrary bases / alphabets.
+  In this kata you have to implement a base converter, which converts between arbitrary
+  bases / alphabets.
 
   The function convert() should take an input (string), the source alphabet (string) and the
   target alphabet (string). You can assume that the input value always consists of characters
@@ -23,20 +24,26 @@ const Alphabet = {
 */
 
 function convert(input, source, target) {
-  // TODO
+  console.log('input: ', input);
+  console.log('source: ', source);
+  console.log('target: ', target);
+  console.log('expecting: ', '1111');
+  const test = source / target;
+  console.log('test: ', test);
 }
 
-// const bin = Alphabet.BINARY;
+const bin = Alphabet.BINARY;
 // const oct = Alphabet.OCTAL;
 const dec = Alphabet.DECIMAL;
 // const hex = Alphabet.HEXA_DECIMAL;
 // const allow = Alphabet.ALPHA_LOWER;
 // const alup = Alphabet.ALPHA_UPPER;
-const alpha = Alphabet.ALPHA;
+// const alpha = Alphabet.ALPHA;
 // const alnum = Alphabet.ALPHA_NUMERIC;
 
-
-convert('0', dec, alpha);
+convert('15', dec, bin);
+// '1111', '"15" dec -> bin'
+// convert('0', dec, alpha);
 // 'a', '"0" dec -> alpha');
 // convert('27', dec, allow);
 // 'bb', '"27" dec -> alpha_lower');
