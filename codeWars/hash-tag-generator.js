@@ -12,5 +12,5 @@ function generateHashtag(str) {
 // NOTE: Tests:
 
 // console.log(generateHashtag('Is it friday yet'));
-// generateHashtag('gotta love squat day');
+generateHashtag('gotta love squat day');
 // console.log(generateHashtag(' '));
