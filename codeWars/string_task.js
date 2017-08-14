@@ -1,6 +1,7 @@
 // NOTE: Should always remeber with injecting items into a string
 // you can use .replace()
 
+/*
 function stringTask(string) {
   const vowels = {
     a: true,
@@ -25,3 +26,15 @@ function stringTask(string) {
 }
 
 stringTask('a');
+*/
+
+const stringTask = (string) => {
+  return string
+    .toLowerCase()
+    .replace(/(a|e|i|o|u|y)/gi, '')
+    // I would still like to learn more about this one
+    .replace(/./g, '.$&');
+  console.log('test: ', test);
+};
+
+stringTask('Codewars');
